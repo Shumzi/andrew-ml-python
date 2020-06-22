@@ -20,6 +20,7 @@ def displayData(X, example_width=None, figsize=(10, 10)):
     else:
         raise IndexError('Input X should be 1 or 2 dimensional.')
 
+    # width/height per digit image displayed.
     example_width = example_width or int(np.round(np.sqrt(n)))
     example_height = n / example_width
 
@@ -27,9 +28,11 @@ def displayData(X, example_width=None, figsize=(10, 10)):
     display_rows = int(np.floor(np.sqrt(m)))
     display_cols = int(np.ceil(m / display_rows))
 
+    # create subplots for each example digit to be displayed.
     fig, ax_array = pyplot.subplots(display_rows, display_cols, figsize=figsize)
     fig.subplots_adjust(wspace=0.025, hspace=0.025)
 
+    # make into 1-D for iteration in next step.
     ax_array = [ax_array] if m == 1 else ax_array.ravel()
 
     for i, ax in enumerate(ax_array):
